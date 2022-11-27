@@ -81,7 +81,6 @@
   "dependencies": {
     "@adonisjs/core": "^5.9.0",
     "@adonisjs/sink": "^5.1.5",
-    "@djpfs/kafka-adonisjs": "^2.0.0",
     "copyfiles": "^2.4.1",
     "kafkajs": "^1.15.0"
   },
