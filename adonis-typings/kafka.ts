@@ -22,5 +22,4 @@ declare module '@ioc:Message/Kafka' {
   }
 
   export * from 'kafkajs'
-
 }
