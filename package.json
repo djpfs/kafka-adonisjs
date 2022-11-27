@@ -1,6 +1,6 @@
 {
   "name": "@djpfs/kafka-adonisjs",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Kafka Provider for AdonisJs",
   "main": "build/src/index.js",
   "files": [
@@ -16,7 +16,7 @@
     "pretest": "npm run lint",
     "test": "node japaFile.js",
     "clean": "del build",
-    "compile": "npm run lint && npm run clean && tsc",
+    "compile": "npm run lint:fix && npm run clean && tsc",
     "copyfiles": "copyfiles \"templates/**/*.txt\" build",
     "build": "npm run compile && npm run copyfiles",
     "commit": "git-cz",

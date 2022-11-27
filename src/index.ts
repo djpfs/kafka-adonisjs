@@ -1,7 +1,7 @@
 import Consumer from './Consumer'
 import Producer from './Producer'
 import { ApplicationContract } from '@ioc:Adonis/Core/Application'
-import { KafkaContract } from './../adonis-typings/kafka'
+import { KafkaContract } from '@ioc:Message/Kafka'
 import kafkaConfig from './Config'
 
 export default class Kafka implements KafkaContract {

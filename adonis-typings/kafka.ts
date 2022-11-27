@@ -21,5 +21,8 @@ declare module '@ioc:Message/Kafka' {
     disconnect?: () => void
   }
 
+  const Kafka: KafkaContract
+
   export * from 'kafkajs'
+  export default Kafka
 }
