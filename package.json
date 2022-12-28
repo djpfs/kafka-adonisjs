@@ -101,16 +101,6 @@
   "adonisjs": {
     "instructions": "./build/instructions.js",
     "instructionsMd": "./build/instructions.md",
-    "templates": {
-      "config": [
-        "start.txt",
-        "start.txt",
-        "contract.txt"
-      ]
-    },
-    "types": "@djpfs/kafka-adonisjs",
-    "providers": [
-      "@djpfs/kafka-adonisjs"
-    ]
+    "types": "@djpfs/kafka-adonisjs"
   }
 }
