@@ -2,13 +2,12 @@ import { join } from 'path'
 import * as sinkStatic from '@adonisjs/sink'
 import { ApplicationContract } from '@ioc:Adonis/Core/Application'
 
-function getStub(...relativePaths: string[]) {
-  return join(__dirname, 'templates', ...relativePaths)
+function getStub(path: string) {
+  return join(__dirname, 'templates', path)
 }
 
 function makeConfig(projectRoot: string, app: ApplicationContract, sink: typeof sinkStatic) {
-  const configDirectory = app.directoriesMap.get('config') || 'config'
-  const configPath = join(configDirectory, 'kafka.ts')
+  const configPath = app.makePath('config/kafka.ts')
   const kafkaConfig = new sink.files.MustacheFile(projectRoot, configPath, getStub('config.txt'))
 
   if (kafkaConfig.exists()) {
@@ -52,12 +51,7 @@ export default async function instructions(
   app: ApplicationContract,
   sink: typeof sinkStatic
 ) {
-  sink.getPrompt().ask('Do you want install kafka nodejs client?', {
-    validate(_) {
-      makeConfig(projectRoot, app, sink)
-      makeContract(projectRoot, app, sink)
-      makeStart(projectRoot, app, sink)
-      return true
-    },
-  })
+  makeConfig(projectRoot, app, sink)
+  makeContract(projectRoot, app, sink)
+  makeStart(projectRoot, app, sink)
 }
