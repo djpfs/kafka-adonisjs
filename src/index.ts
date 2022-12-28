@@ -1,17 +1,17 @@
 import Consumer from './Consumer'
 import Producer from './Producer'
 import { ApplicationContract } from '@ioc:Adonis/Core/Application'
-import { KafkaContract } from '@ioc:Message/Kafka'
-import kafkaConfig from './Config'
+import { KafkaConfig, KafkaContract } from '@ioc:Message/Kafka'
+import makeKafkaConfig from './Config'
 
 export default class Kafka implements KafkaContract {
   public consumer!: Consumer
   public producer!: Producer
-  public config
+  public config: KafkaConfig
   public Logger
 
-  constructor(Logger: any) {
-    this.config = kafkaConfig
+  constructor(Logger: any, env: any) {
+    this.config = makeKafkaConfig(env)
     this.Logger = Logger
   }
   protected application!: ApplicationContract

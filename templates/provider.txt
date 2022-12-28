@@ -1,15 +1,14 @@
 import { ApplicationContract } from '@ioc:Adonis/Core/Application'
-import Kafka from '../src'
+import Kafka from '@ioc:Message/Kafka'
 
 export default class KafkaProvider {
-  constructor(protected app: ApplicationContract) { }
+  constructor(protected app: ApplicationContract) {}
 
   public register() {
     this.app.container.singleton('Message/Kafka', () => {
       const Logger = this.app.container.resolveBinding('Adonis/Core/Logger')
-      const env = this.app.container.resolveBinding('Adonis/Core/Env')
 
-      return new Kafka(Logger, env)
+      return new Kafka(Logger)
     })
   }
 

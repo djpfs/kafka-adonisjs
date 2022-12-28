@@ -1,8 +1,8 @@
 import { Kafka, logLevel } from 'kafkajs'
-import KafkaConfig from './Config'
+import { KafkaConfig } from '@ioc:Message/Kafka'
 
 class Consumer {
-  public config: typeof KafkaConfig
+  public config: KafkaConfig
   public topics: string[]
   public events: any
   public killContainer: boolean

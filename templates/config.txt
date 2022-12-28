@@ -1,6 +1,7 @@
 import Env from '@ioc:Adonis/Core/Env'
+import { KafkaConfig } from '@ioc:Message/Kafka'
 
-const kafkaConfig = {
+const kafkaConfig: KafkaConfig = {
   enabled: Env.get('KAFKA_ENABLED', false),
   clientId: Env.get('KAFKA_CLIENT_ID', 'default-client'),
   groupId: Env.get('KAFKA_GROUP_ID', 'default-group'),
@@ -10,6 +11,9 @@ const kafkaConfig = {
   fromBeginning: Env.get('KAFKA_FROM_BEGINNING', true),
   autoCommit: false,
   partitionsConcurrently: 1,
+  connectionTimeout: 3000,
+  requestTimeout: 60000,
+  logLevel: 1,
 }
 
 export default kafkaConfig

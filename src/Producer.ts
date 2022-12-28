@@ -1,8 +1,8 @@
 import { Kafka, logLevel } from 'kafkajs'
-import KafkaConfig from './Config'
+import { KafkaConfig } from '@ioc:Message/Kafka'
 
 class Producer {
-  public config: typeof KafkaConfig
+  public config: KafkaConfig
   public producer: any
 
   constructor(config: any) {
