@@ -17,7 +17,6 @@ function makeConfig(projectRoot: string, app: ApplicationContract, sink: typeof 
   }
   kafkaConfig.commit()
   sink.logger.action('create').succeeded(configPath)
-
 }
 
 function makeContract(projectRoot: string, app: ApplicationContract, sink: typeof sinkStatic) {
@@ -60,5 +59,5 @@ export default async function instructions(
       makeStart(projectRoot, app, sink)
       return true
     },
-  });
+  })
 }
