@@ -9,7 +9,9 @@
     "build/src",
     "build/templates",
     "build/instructions.js",
-    "build/instructions.d.ts"
+    "build/instructions.d.ts",
+    "build/README.md",
+    "build/instructions.md"
   ],
   "scripts": {
     "mrm": "mrm --preset=@adonisjs/mrm-preset",
@@ -17,7 +19,7 @@
     "test": "node japaFile.js",
     "clean": "del build",
     "compile": "npm run lint:fix && npm run clean && tsc",
-    "copyfiles": "copyfiles \"templates/**/*.txt\" build",
+    "copyfiles": "copyfiles \"templates/**/*.txt\" \"instructions.md\" build",
     "build": "npm run compile && npm run copyfiles",
     "commit": "git-cz",
     "release": "np",
@@ -81,6 +83,7 @@
   "dependencies": {
     "@adonisjs/core": "^5.9.0",
     "@adonisjs/sink": "^5.1.5",
+    "@djpfs/adonisjs-service": "^1.0.0",
     "copyfiles": "^2.4.1",
     "kafkajs": "^1.15.0"
   },
