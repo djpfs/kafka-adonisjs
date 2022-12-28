@@ -46,6 +46,18 @@ function makeStart(projectRoot: string, app: ApplicationContract, sink: typeof s
   sink.logger.action('create').succeeded('start/kafka.ts')
 }
 
+function makeProvider(projectRoot: string, app: ApplicationContract, sink: typeof sinkStatic) {
+  const providerPath = app.makePath('providers/KafkaProvider.ts')
+  const kafkaStart = new sink.files.MustacheFile(projectRoot, providerPath, getStub('provider.txt'))
+
+  if (kafkaStart.exists()) {
+    sink.logger.action('skip').succeeded('providers/KafkaProvider.ts')
+    return
+  }
+  kafkaStart.commit()
+  sink.logger.action('create').succeeded('providers/KafkaProvider.ts')
+}
+
 export default async function instructions(
   projectRoot: string,
   app: ApplicationContract,
@@ -54,4 +66,5 @@ export default async function instructions(
   makeConfig(projectRoot, app, sink)
   makeContract(projectRoot, app, sink)
   makeStart(projectRoot, app, sink)
+  makeProvider(projectRoot, app, sink)
 }
