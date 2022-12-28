@@ -2,7 +2,7 @@ import { ApplicationContract } from '@ioc:Adonis/Core/Application'
 import Kafka from '../src'
 
 export default class KafkaProvider {
-  constructor(protected app: ApplicationContract) { }
+  constructor(protected app: ApplicationContract) {}
 
   public register() {
     this.app.container.singleton('Message/Kafka', () => {
