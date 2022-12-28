@@ -1,6 +1,4 @@
-import { KafkaConfig } from '@ioc:Message/Kafka'
-
-function makeKafkaConfig(env: any): KafkaConfig {
+function makeKafkaConfig(env: any) {
   return {
     enabled: env.get('KAFKA_ENABLED', false),
     clientId: env.get('KAFKA_CLIENT_ID', 'default-client'),

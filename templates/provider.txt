@@ -1,5 +1,5 @@
 import { ApplicationContract } from '@ioc:Adonis/Core/Application'
-import Kafka from '../src'
+import Kafka from '@djpfs/kafka-adonisjs'
 
 export default class KafkaProvider {
   constructor(protected app: ApplicationContract) {}
