@@ -39,12 +39,12 @@ export default class Kafka implements KafkaContract {
     this.consumer.on(topic, callback)
   }
 
-  public send(topic: string, data: any) {
+  public async send(topic: string, data: any) {
     if (this.config.enabled !== 'true') return
     if (this.producer === undefined) {
       this.start()
     }
-    this.producer.send(topic, data)
+    return await this.producer.send(topic, data)
   }
 
   public async disconnect() {

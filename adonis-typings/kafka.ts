@@ -1,5 +1,3 @@
-
-
 declare module '@ioc:Message/Kafka' {
   export interface KafkaConfig {
     enabled: string
@@ -21,7 +19,7 @@ declare module '@ioc:Message/Kafka' {
   export interface KafkaContract {
     start?: (...args: any[]) => void
     on?: (...args: any[]) => void
-    send?: (topic: string, data: object) => Promise<RecordMetadata[]>,
+    send?: (topic: string, data: object) => Promise<RecordMetadata[] | undefined>
     disconnect?: () => void
   }
 

@@ -1,4 +1,4 @@
-import { Kafka, logLevel } from 'kafkajs'
+import { Kafka, logLevel, Consumer as KafkaConsumer } from 'kafkajs'
 import { KafkaConfig } from '@ioc:Message/Kafka'
 
 class Consumer {
@@ -7,7 +7,7 @@ class Consumer {
   public events: any
   public killContainer: boolean
   public timeout: any = 0
-  public consumer: any
+  public consumer: KafkaConsumer
 
   constructor(config: any) {
     this.config = config
@@ -15,7 +15,6 @@ class Consumer {
     this.events = {}
     this.killContainer = false
     this.timeout = null
-    this.consumer = null
 
     const brokers = this.config.urls ? this.config.urls.split(',') : null
 
@@ -36,7 +35,7 @@ class Consumer {
     message,
   }: {
     topic: string
-    partition: string
+    partition: number
     message: any
   }) {
     const result = JSON.parse(message.value.toString())
