@@ -17,10 +17,10 @@ declare module '@ioc:Message/Kafka' {
   import { RecordMetadata } from 'kafkajs'
 
   export interface KafkaContract {
-    start?: (...args: any[]) => void
-    on?: (...args: any[]) => void
+    start: (...args: any[]) => void
+    on: (...args: any[]) => void
     send: (topic: string, data: object) => Promise<RecordMetadata[] | undefined>
-    disconnect?: () => void
+    disconnect: () => void
   }
 
   const Kafka: KafkaContract
