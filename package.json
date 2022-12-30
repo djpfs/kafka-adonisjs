@@ -40,7 +40,7 @@
     "adonisjs",
     "adonisjs-provider"
   ],
-  "author": "jericopulvera,djpfs",
+  "author": "djpfs",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/djpfs/kafka-adonisjs/issues"

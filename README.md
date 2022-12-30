@@ -5,6 +5,7 @@
 <h2>
 Adonis Kafka provides an easy way to start using Kafka.
 </h2>
+
 <br>
 <h2><b>Installation</b></h2>
 
@@ -34,3 +35,8 @@ Create your producer and consumer in `start/kafka.js`
 You can find a demo project [here](https://github.com/djpfs/adonisjs-kafka-microservices-example).
 
 
+## Based on
+<ul>
+<li><a href="https://kafka.js.org/">KafkaJS</a></li>
+<li><a href="https://github.com/halcyon-agile/adonis-kafka">Adonis Kafka</a></li>
+</ul>
