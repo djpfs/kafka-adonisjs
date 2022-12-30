@@ -1,3 +1,5 @@
+
+
 declare module '@ioc:Message/Kafka' {
   export interface KafkaConfig {
     enabled: string
@@ -14,10 +16,12 @@ declare module '@ioc:Message/Kafka' {
     logLevel: any
   }
 
+  import { RecordMetadata } from 'kafkajs'
+
   export interface KafkaContract {
     start?: (...args: any[]) => void
     on?: (...args: any[]) => void
-    send?: (topic: string, data: object) => void
+    send?: (topic: string, data: object) => Promise<RecordMetadata[]>,
     disconnect?: () => void
   }
 

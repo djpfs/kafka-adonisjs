@@ -1,9 +1,9 @@
-import { Kafka, logLevel } from 'kafkajs'
+import { Kafka, logLevel, Producer as KafkaProducer } from 'kafkajs'
 import { KafkaConfig } from '@ioc:Message/Kafka'
 
 class Producer {
   public config: KafkaConfig
-  public producer: any
+  public producer: KafkaProducer
 
   constructor(config: any) {
     this.config = config
@@ -49,7 +49,7 @@ class Producer {
       return message
     })
 
-    await this.producer.send({
+    return await this.producer.send({
       topic,
       messages,
     })
