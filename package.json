@@ -35,7 +35,10 @@
     "url": "git+https://github.com/djpfs/kafka-adonisjs.git"
   },
   "keywords": [
-    "kafka"
+    "kafka",
+    "adonis",
+    "adonisjs",
+    "adonisjs-provider"
   ],
   "author": "jericopulvera,djpfs",
   "license": "MIT",
