@@ -104,6 +104,7 @@
     "types": "@djpfs/kafka-adonisjs",
     "providers": [
       "./providers/KafkaProvider"
-    ]
+    ],
+    "preloads": ["./start/kafka"]
   }
 }

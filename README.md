@@ -29,4 +29,8 @@ Edit the `config/kafka.js` file to edit the default configuration.
 
 Create your producer and consumer in `start/kafka.js` 
 
+## Demo
+
+You can find a demo project [here](https://github.com/djpfs/adonisjs-kafka-microservices-example).
+
 
