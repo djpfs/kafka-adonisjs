@@ -101,7 +101,7 @@
   "adonisjs": {
     "instructions": "./build/instructions.js",
     "instructionsMd": "./build/instructions.md",
-    "types": "@djpfs/kafka-adonisjs",
+    "types": "@djpfs/kafka-adonisjs/build/adonis-typings",
     "providers": [
       "./providers/KafkaProvider"
     ],
