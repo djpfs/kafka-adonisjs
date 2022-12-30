@@ -1,6 +1,6 @@
 {
   "name": "@djpfs/kafka-adonisjs",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Kafka Provider for AdonisJs",
   "main": "build/src/index.js",
   "files": [
@@ -105,6 +105,8 @@
     "providers": [
       "./providers/KafkaProvider"
     ],
-    "preloads": ["./start/kafka"]
+    "preloads": [
+      "./start/kafka"
+    ]
   }
 }
