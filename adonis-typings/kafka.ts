@@ -1,9 +1,4 @@
-
-
-
 declare module '@ioc:Message/Kafka' {
-
-
   export interface KafkaConfig {
     enabled: string
     clientId: string
@@ -21,17 +16,16 @@ declare module '@ioc:Message/Kafka' {
 
   import { RecordMetadata, Kafka as KafkaJs } from 'kafkajs'
 
-  type Consumer = import('./../src/Consumer').default;
-  type Producer = import('./../src/Producer').default;
-
+  type Consumer = import('./../src/Consumer').default
+  type Producer = import('./../src/Producer').default
 
   export interface KafkaContract {
     start: (...args: any[]) => void
     on: (...args: any[]) => void
     send: (topic: string, data: object) => Promise<RecordMetadata[] | undefined>
-    disconnect: () => void,
-    consumer: Consumer,
-    producer: Producer,
+    disconnect: () => void
+    consumer: Consumer
+    producer: Producer
     kafka: KafkaJs
   }
 

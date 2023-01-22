@@ -30,14 +30,12 @@ export default class Kafka implements KafkaContract {
     this.consumer = new Consumer(this.kafka, this.config)
     this.producer = new Producer(this.kafka, this.config)
 
-
     this.consumer.start().catch((e) => this.Logger.error(`[consumer] ${e.message}`, e))
 
     this.producer.start()
   }
 
   private createKafka() {
-
     const brokers = this.config.urls ? this.config.urls.split(',') : null
 
     this.kafka = new KafkaJs({
@@ -68,5 +66,4 @@ export default class Kafka implements KafkaContract {
   public async disconnect() {
     await this.consumer.consumer.disconnect()
   }
-
 }
