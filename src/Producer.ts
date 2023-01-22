@@ -1,22 +1,12 @@
-import { Kafka, logLevel, Producer as KafkaProducer } from 'kafkajs'
+import { Kafka, Producer as KafkaProducer } from 'kafkajs'
 import { KafkaConfig } from '@ioc:Message/Kafka'
 
 class Producer {
   public config: KafkaConfig
   public producer: KafkaProducer
 
-  constructor(config: any) {
+  constructor(kafka: Kafka, config: any) {
     this.config = config
-
-    const brokers = this.config.urls ? this.config.urls.split(',') : null
-
-    const kafka = new Kafka({
-      clientId: this.config.clientId,
-      brokers: brokers || [`${this.config.url}:${this.config.port}`],
-      connectionTimeout: this.config.connectionTimeout || 3000,
-      requestTimeout: this.config.requestTimeout || 60000,
-      logLevel: this.config.logLevel || logLevel.ERROR,
-    })
 
     this.producer = kafka.producer()
   }

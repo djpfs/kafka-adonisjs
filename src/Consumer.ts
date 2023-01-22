@@ -1,4 +1,4 @@
-import { Kafka, logLevel, Consumer as KafkaConsumer } from 'kafkajs'
+import { Kafka, Consumer as KafkaConsumer } from 'kafkajs'
 import { KafkaConfig } from '@ioc:Message/Kafka'
 
 class Consumer {
@@ -9,22 +9,12 @@ class Consumer {
   public timeout: any = 0
   public consumer: KafkaConsumer
 
-  constructor(config: any) {
+  constructor(kafka: Kafka, config: any) {
     this.config = config
     this.topics = []
     this.events = {}
     this.killContainer = false
     this.timeout = null
-
-    const brokers = this.config.urls ? this.config.urls.split(',') : null
-
-    const kafka = new Kafka({
-      clientId: this.config.clientId || 'local',
-      brokers: brokers || [`${this.config.url}:${this.config.port}`],
-      connectionTimeout: this.config.connectionTimeout || 3000,
-      requestTimeout: this.config.requestTimeout || 60000,
-      logLevel: this.config.logLevel || logLevel.ERROR,
-    })
 
     this.consumer = kafka.consumer({ groupId: this.config.groupId })
   }
@@ -100,6 +90,7 @@ class Consumer {
       })
     })
   }
+
 }
 
 export default Consumer
