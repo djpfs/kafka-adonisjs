@@ -34,6 +34,7 @@
     "type": "git",
     "url": "git+https://github.com/djpfs/kafka-adonisjs.git"
   },
+  "private": true,
   "keywords": [
     "kafka",
     "adonis",
