@@ -9,11 +9,11 @@ function makeKafkaConfig(env: any): KafkaConfig {
     port: env.get('KAFKA_PORT', 9092),
     urls: env.get('KAFKA_URLS', null),
     fromBeginning: env.get('KAFKA_FROM_BEGINNING', true),
-    autoCommit: false,
-    partitionsConcurrently: 1,
-    connectionTimeout: 3000,
-    requestTimeout: 60000,
-    logLevel: 1,
+    autoCommit: env.get('KAFKA_AUTO_COMMIT', false),
+    partitionsConcurrently: env.get('KAFKA_PARTITIONS_CONCURRENTLY', 1),
+    connectionTimeout: env.get('KAFKA_CONNECTION_TIMEOUT', 3000),
+    requestTimeout: env.get('KAFKA_REQUEST_TIMEOUT', 60000),
+    logLevel: env.get('KAFKA_LOG_LEVEL', 1),
   }
 }
 

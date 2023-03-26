@@ -57,8 +57,8 @@ class Consumer {
     await this.consumer.connect()
 
     await this.consumer.run({
-      partitionsConsumedConcurrently: this.config.partitionsConcurrently || 1,
-      autoCommit: this.config.autoCommit || false,
+      partitionsConsumedConcurrently: this.config.partitionsConcurrently,
+      autoCommit: this.config.autoCommit,
       eachMessage: async ({ topic, partition, message }: any) =>
         this.execute({ topic, partition, message }),
     })

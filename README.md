@@ -27,8 +27,75 @@ Edit the `config/kafka.js` file to edit the default configuration.
 <br>
 <br>
 <h2>Usage</h2>
+<h3>List topics</h3>
 
-Create your producer and consumer in `start/kafka.js` 
+```js
+// file: start/kafka.js
+import Kafka from '@ioc:Message/Kafka'
+
+Kafka.admin.listTopics().then((topics: any[]) => {
+  console.log('topics', topics);
+});
+```
+
+<h3>Create topic</h3>
+
+```js
+// file: start/kafka.js
+import Kafka from '@ioc:Message/Kafka'
+
+Kafka.admin.createTopics({
+  topics: [
+    {
+      topic: 'messages',
+      numPartitions: 1,
+      replicationFactor: 1,
+    },
+  ],
+  waitForLeaders: true,
+}).then((result: any) => {
+  console.log('result', result);
+});
+```
+
+<h3>Create Consumer</h3>
+Create your consumer in `start/kafka.js`. Ex:
+    
+```js
+import Kafka from '@ioc:Message/Kafka'
+
+Kafka.on('messages', (data: any, commit: any) => {
+      console.log(data)
+      // commit(false) // For error transaction
+      commit() // For successful transaction
+});
+```
+
+<h3>Create Producer</h3>
+Create your producer in `app/Controllers/Http` for exemple, or in any other place. Ex:
+
+```js
+import Kafka from "@ioc:Message/Kafka";
+import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+
+export default class UserController {
+
+    public async show({ params }: HttpContextContract) {
+        return Kafka.send('messages', { user_id: params.id })
+    }
+}
+```
+
+<h3>To another commands</h3>
+This package uses <a href="https://kafka.js.org/docs">KafkaJS</a>, so you can use all commands from KafkaJS. Ex:
+
+```js
+import Kafka from '@ioc:Message/Kafka'
+
+Kafka.admin.describeCluster().then((result: any) => {
+  console.log('result', result);
+});
+```
 
 ## Demo
 

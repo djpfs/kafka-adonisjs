@@ -14,7 +14,7 @@ declare module '@ioc:Message/Kafka' {
     logLevel: any
   }
 
-  import { RecordMetadata, Kafka as KafkaJs } from 'kafkajs'
+  import { RecordMetadata, Kafka as KafkaJs, Admin } from 'kafkajs'
 
   type Consumer = import('./../src/Consumer').default
   type Producer = import('./../src/Producer').default
@@ -27,6 +27,7 @@ declare module '@ioc:Message/Kafka' {
     consumer: Consumer
     producer: Producer
     kafka: KafkaJs
+    admin?: Admin
   }
 
   const Kafka: KafkaContract
