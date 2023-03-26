@@ -72,5 +72,4 @@ export default class Kafka implements KafkaContract {
   public async disconnect() {
     await this.consumer.consumer.disconnect()
   }
-
 }
