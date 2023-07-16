@@ -6,6 +6,8 @@ declare module '@ioc:Message/Kafka' {
     port: number
     urls?: string
     groupId: string
+    autoCommit: boolean
+    partitionsConcurrently: number
   }
 
   type Consumer = import('./../src/Consumer').default
