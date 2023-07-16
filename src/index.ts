@@ -40,11 +40,9 @@ export default class Kafka implements KafkaContract {
     const brokers = this.config.urls ? this.config.urls.split(',') : null
 
     this.kafka = new KafkaJs({
+      ...this.config,
       clientId: this.config.clientId || 'local',
       brokers: brokers || [`${this.config.url}:${this.config.port}`],
-      connectionTimeout: this.config.connectionTimeout,
-      requestTimeout: this.config.requestTimeout,
-      logLevel: this.config.logLevel,
     })
 
     if (this.kafka !== undefined) {

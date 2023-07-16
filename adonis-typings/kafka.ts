@@ -1,20 +1,12 @@
 declare module '@ioc:Message/Kafka' {
-  export interface KafkaConfig {
+  import { RecordMetadata, Kafka as KafkaJs, Admin, KafkaConfig as KafkaJsConfig } from 'kafkajs'
+  export interface KafkaConfig extends KafkaJsConfig {
     enabled: string
-    clientId: string
-    groupId: string
     url: string
     port: number
     urls?: string
-    fromBeginning: boolean
-    autoCommit: boolean
-    connectionTimeout?: number
-    requestTimeout?: number
-    partitionsConcurrently?: number
-    logLevel: any
+    groupId: string
   }
-
-  import { RecordMetadata, Kafka as KafkaJs, Admin } from 'kafkajs'
 
   type Consumer = import('./../src/Consumer').default
   type Producer = import('./../src/Producer').default

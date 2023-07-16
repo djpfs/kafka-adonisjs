@@ -6,7 +6,7 @@ class Consumer {
   public topics: string[]
   public events: any
   public killContainer: boolean
-  public timeout: any = 0
+  public timeout: number | null
   public consumer: KafkaConsumer
 
   constructor(kafka: Kafka, config: any) {
